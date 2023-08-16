@@ -1,5 +1,7 @@
 package ModelElements;
 
+import Stuff.Point3D;
+
 import java.util.ArrayList;
 import java.util.List;
 

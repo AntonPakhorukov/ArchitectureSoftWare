@@ -8,7 +8,7 @@ import ModelElements.Scene;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModelStore {
+public class ModelStore implements IModelChanger{
     public List<PoligonalModel> Models;
     public List<Scene> Scenes;
     public List<Flash> Flashes;
