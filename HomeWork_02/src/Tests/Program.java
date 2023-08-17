@@ -1,27 +1,21 @@
+package Tests;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Main {
+public class Program {
     public static void main(String[] args) {
         Random random = ThreadLocalRandom.current();
         List<ItemGenerator> generatorList = new ArrayList<>();
-        List<ItemFabric> fabrics = new ArrayList<>();
-        fabrics.add(new GoldGenerator());
-        fabrics.add(new GemGenerator());
-        fabrics.add(new DiamondGenerator());
-        fabrics.add(new GlassGenerator());
-//        generatorList.add(new GoldGenerator());
-//        generatorList.add(new GemGenerator());
+        generatorList.add(new GoldGenerator());
+        generatorList.add(new GemGenerator());
 
         for (int i = 0; i < 10; i++) {
-//            int index  = Math.abs(random.nextInt(0, 2));
-            int index = random.nextInt(0,4);
-            ItemFabric itemFabric = fabrics.get(index);
-//            ItemGenerator itemGenerator = generatorList.get(index);
-            itemFabric.openReward();
-//            itemGenerator.openReward();
+            int index  = Math.abs(random.nextInt(0, 2));
+            ItemGenerator itemGenerator = generatorList.get(index);
+            itemGenerator.openReward();
         }
     }
 }
@@ -55,63 +49,58 @@ abstract class ItemGenerator {
  * Создаем интерфейс, который будет реализовываться в фабрике,
  * производит продукт
  */
-//interface GameItem{
-//    void open();
-//}
+interface GameItem{
+    void open();
+}
 
 /**
  * Создаем одну фабрику => фабрика по производству золота
  * наследует абстрактный класс ItemGenerator
  */
-//class GoldGenerator extends ItemGenerator {
-//
-//    /**
-//     * Так как мы наследуемся от ItemGenerator, то нам нужно переопределить метод
-//     * @return возвращает продукт - золото
-//     */
-//    @Override
-//    public GameItem createItem() {
-//        return new GoldReward();
-//    }
-//}
+class GoldGenerator extends ItemGenerator {
+    /**
+     * Так как мы наследуемся от ItemGenerator, то нам нужно переопределить метод
+     * @return возвращает продукт - золото
+     */
+    @Override
+    public GameItem createItem() {
+        return new GoldReward();
+    }
+}
 /**
  * Создаем награду - золото
  */
-//class GoldReward implements GameItem{
-//
-//    /**
-//     * Переопределяем метод, достаем золото
-//     */
-//    @Override
-//    public void open() {
-//        System.out.println("Gold");
-//    }
-//}
-
+class GoldReward implements GameItem{
+    /**
+     * Переопределяем метод, достаем золото
+     */
+    @Override
+    public void open() {
+        System.out.println("Gold");
+    }
+}
 /**
  * Создаем еще одну фабрику, которая будет создавать бриллианты
  */
-//class GemGenerator extends ItemGenerator {
-//    /**
-//     * Переопределили метод создания продукта
-//     * @return возвращает новый продукт - бриллиант
-//     */
-//    @Override
-//    public GameItem createItem() {
-//        return new GenReward();
-//    }
-//}
-
+class GemGenerator extends ItemGenerator {
+    /**
+     * Переопределили метод создания продукта
+     * @return возвращает новый продукт - бриллиант
+     */
+    @Override
+    public GameItem createItem() {
+        return new GenReward();
+    }
+}
 /**
  * Создаем другой продукт, бриллианты
  */
-//class GenReward implements GameItem{
-//
-//    /**
-//     * Переопределяем метод, достаем бриллианты
-//     */
-//    @Override
-//    public void open() {
-//        System.out.println("Gen");
-//    }
-//}
+class GenReward implements GameItem{
+    /**
+     * Переопределяем метод, достаем бриллианты
+     */
+    @Override
+    public void open() {
+        System.out.println("Gen");
+    }
+}
