@@ -20,22 +20,4 @@ public class TicketProvider {
         }
         return null;
     }
-    /**
-     * Метод обновления информации по билетам
-     * @param ticket на вход принимает купленный билет
-     * @return возвращает true/false, произведено ли изменения списка
-     * свободных билетов с учетом покупки
-     *
-     * Необходимости в данном методе нет, так как
-     */
-//    public boolean updateTicketStatus(Ticket ticket) {
-//        for (Ticket t : ticketList) {
-//            if (t.rootNumber == ticket.rootNumber) {
-//                t.isValid = false;
-//                t.nameCustomer = ticket.nameCustomer;
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
 }
