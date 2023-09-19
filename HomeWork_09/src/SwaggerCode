@@ -4,6 +4,7 @@ info:
   version: 0.0.1
 servers:
   - url: https://localhost:8080/api/v1
+    description: Local Server
 paths:
   /clients:
     get:
@@ -17,7 +18,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Clients'
+                $ref: '#/components/schemas/Client'
         '400':
           description: Указан неверный идентификатор
           content:
@@ -36,9 +37,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  components:
-    schemas:
-    Cloud:
+components:
+  schemas:
+    Client:
       type: object
       required:
         - id_client
@@ -81,5 +82,20 @@ paths:
           type: String
           example: 16
           description: Количество ядер процессора
+    Error:
+      type: object
+      required:
+        - error_code
+        - error_message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    Clients:
+      type: array
+      items:
+        $ref: "#/components/schemas/Client"
+
 
 
